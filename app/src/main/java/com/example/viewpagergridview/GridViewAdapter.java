@@ -1,6 +1,5 @@
 package com.example.viewpagergridview;
 
-import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,8 +70,12 @@ public class GridViewAdapter extends BaseAdapter {
         int pos = position + currentIndex * pageSize;
         viewHolder.tv_subject.setText(subjectList.get(pos).getName());
 //        viewHolder.iv_subject.setImageResource(subjectList.get(pos).getIcon());
+
+//        Glide.with(convertView.getContext())
+//                .load("http://bmob-cdn-15478.b0.upaiyun.com/2017/12/21/6d5426c440fdb9a980b00fad9847d38e.png")
+//                .into(viewHolder.iv_subject);
         Glide.with(convertView.getContext())
-                .load("http://bmob-cdn-15478.b0.upaiyun.com/2017/12/21/6d5426c440fdb9a980b00fad9847d38e.png")
+                .load(subjectList.get(pos).getIcon())
                 .into(viewHolder.iv_subject);
         return convertView;
     }

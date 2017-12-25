@@ -3,7 +3,6 @@ package com.example.viewpagergridview;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -16,17 +15,21 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private String[] titles = {"美食", "电影", "酒店住宿", "休闲娱乐", "甜品饮品",
-            "水上乐园", "汽车服务", "美发", "丽人", "景点",
-            "足疗按摩", "运动健身", "健身", "超市", "买菜",
-            "今日新单", "外卖", "自助餐", "KTV", "机票/火车票",
-            "周边游", "小吃快餐", "面膜", "美甲美睫", "火锅",
-            "生日蛋糕", "母婴亲子", "生活服务", "婚纱摄影", "学习培训",
-            "家装", "结婚"};
+            "水上乐园", "汽车服务", "美发", "丽人", "景点"};
 
+    private String[] urls={"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1665207864,746409922&fm=27&gp=0.jpg"
+            ,"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=991823527,956610122&fm=27&gp=0.jpg"
+    ,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2644124456,1222741308&fm=27&gp=0.jpg"
+    ,"http://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&ie=utf-8&in=24401&cl=2&lm=-1&st=-1&step_word=&rn=1&cs=&ln=1998&fmq=1402900904181_R&ic=0&s=&se=1&sme=0&tab=&width=&height=&face=0&is=&istype=2&ist=&jit=&fr=ala&ala=1&alatpl=others&pos=1&pn=3&word=%E5%9B%BE%E7%89%87%20%E9%A3%8E%E6%99%AF&di=39263243360&os=3381160936,3507749551&pi=0&objurl=http%3A%2F%2Fpic4.nipic.com%2F20091121%2F3764872_215617048242_2.jpg"
+    ,"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2661055612,1771836516&fm=27&gp=0.jpg"
+    ,"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1665207864,746409922&fm=27&gp=0.jpg"
+            ,"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=991823527,956610122&fm=27&gp=0.jpg"
+            ,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2644124456,1222741308&fm=27&gp=0.jpg"
+            ,"http://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&ie=utf-8&in=24401&cl=2&lm=-1&st=-1&step_word=&rn=1&cs=&ln=1998&fmq=1402900904181_R&ic=0&s=&se=1&sme=0&tab=&width=&height=&face=0&is=&istype=2&ist=&jit=&fr=ala&ala=1&alatpl=others&pos=1&pn=3&word=%E5%9B%BE%E7%89%87%20%E9%A3%8E%E6%99%AF&di=39263243360&os=3381160936,3507749551&pi=0&objurl=http%3A%2F%2Fpic4.nipic.com%2F20091121%2F3764872_215617048242_2.jpg"
+            ,"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2661055612,1771836516&fm=27&gp=0.jpg"};
     private List<Subject> subjectList;
 
     private LinearLayout ll_dot;
-
     //每页展示的主题个数
     private final int pageSize = 10;
     private static final String TAG = "MainActivity";
@@ -40,9 +43,15 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         ll_dot = (LinearLayout) findViewById(R.id.ll_dot);
         subjectList = new ArrayList<>();
-        for (String title : titles) {
-            subjectList.add(new Subject(title, R.drawable.icon));
+
+        for (int i = 0; i <10 ; i++) {
+            subjectList.add(new Subject(titles[i],urls[i]));
         }
+
+
+
+
+
         //需要的页面数
         int pageCount = (int) Math.ceil(subjectList.size() * 1.0 / pageSize);
         List<View> viewList = new ArrayList<>();

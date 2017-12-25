@@ -9,9 +9,9 @@ public class Subject {
     private String name;
 
     //主题图标资源ID
-    private int icon;
+    private String icon;
 
-    public Subject(String name, int icon) {
+    public Subject(String name, String icon) {
         this.name = name;
         this.icon = icon;
     }
@@ -24,11 +24,11 @@ public class Subject {
         this.name = name;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
